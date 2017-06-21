@@ -1,0 +1,5 @@
+spikes/
+node_modules/
+.elasticbeanstalk/
+test/
+tf/

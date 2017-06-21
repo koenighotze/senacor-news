@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: koenighotze-pod
+  labels:
+    name: koenighotze-pod
+spec:
+  containers:
+  - name: koenighotze-pod
+    image: koenighotze/news_server:1.0.0
+    ports:
+      - containerPort: 8000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: koenighotze-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8000
+  selector:
+    name: koenighotze-pod

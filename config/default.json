@@ -1,0 +1,7 @@
+{
+  "newsServer": {
+    "url": "https://senacor.com/news-events/",
+    "timeout": 2000,
+    "maxBytes": 200000
+  }
+}
