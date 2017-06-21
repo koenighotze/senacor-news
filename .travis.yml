@@ -9,5 +9,6 @@ deploy:
   region: eu-west-1
   app: senacor-aktuelles
   env: senacor-aktuelles
+  bucket_name: elasticbeanstalk-eu-west-1-717693469995
   on:
     repo: koenighotze/senacor-news
