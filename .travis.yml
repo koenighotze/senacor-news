@@ -1,4 +1,13 @@
 language: node_js
 node_js:
-  - "7"
-
+- '7'
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: AKIAIIPHE4XCYXHR25CA
+  secret_access_key:
+    secure: gfnFla8UixitxDiHFO5aSKbGKkTG9LDkq6aOL4MkdvnJwLQQKK8F5ctNQq1kzlT2rWJQb0YTAqGmjLzUKRyvVrJ4mJ2Y/BFy26ZMtm7szmOnFKqbpLV1eojbQQYXl82VoZheAxmsZUHhBjTiD/4wNIEfKprBVFtqYuWHFgxh0ntBQQQ0dZBAqTDKpVjmmb1Wj7/JPKdbGG7xRxObqXSKaHEf1/i+IFzc8mx+bgDCN45a0k498VgRufaws+7OZlL/L/BNr8laWQM1AcTffp/CJ51E0+hhaa+WfkSxITZsWsvd/XLXItRVUn9eCS5PObCDhSS0jZCkKeaclDR+o5FAodJ6wSzSivoQJyjUIiCiGRZQVhInnYR/Z2NuUn3kumcsYqTpQsRjNLoc7XAgihStmjUHEzp8yo2x+mDgqK9TVSyKjkmuHZKxgz1Yc3FTZv4WX+WW6vFobhQK1vt2gpdhaZYlI5qwb6LbvP2D0O0lkMjXVBbhOc+Hqdfab4Ky+XSzPb/vAC/YJK38kcEnSxmv99LyQU1yPV5lcrC3DWetwzpD8WK2kLN5mV46gYZf3ifEIIv/hlrC8o2wLWMaQ/dAXND1B2fj+XzUU9eKmSEFItzDQUIkhWLs45gwYbEa5rSEE+6laSZr11MpbRJdiukXrOkT92Ea4vjzFSVJsLk8mxU=
+  region: eu-west-1
+  app: senacor-aktuelles
+  env: senacor-aktuelles
+  on:
+    repo: koenighotze/senacor-news
