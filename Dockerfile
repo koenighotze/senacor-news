@@ -11,7 +11,7 @@ RUN adduser -h /home/app -s /bin/false -D app
 
 WORKDIR /home/app/
 COPY package.json .
-RUN npm i && npm cache clean
+RUN npm i --production && npm cache clean
 
 COPY config/ config/
 COPY src/ src/

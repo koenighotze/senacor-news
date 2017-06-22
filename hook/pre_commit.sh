@@ -1,3 +1,4 @@
+#!/bin/sh
 echo Stashing uncommited changes
 STASH_NAME="pre-commit-$(date +%s)"
 git stash save -q --keep-index $STASH_NAME
