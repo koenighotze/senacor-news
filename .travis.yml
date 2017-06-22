@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "7"
+- '7'
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIIPHE4XCYXHR25CA
@@ -13,3 +13,6 @@ deploy:
   on:
     repo: koenighotze/senacor-news
     branch: release
+notifications:
+  slack:
+    secure: XiRlved3Mx9PwYxaQDwO2ul61VeoZvXicFTNFyCt7weA4z6UxiJoYSnvdnzS+YK+TRjwxru+8E/v0obiuu7+B6XXD6QIKxWb9Zof4wGqwZjWrIYCWZoRzUmS7m122oPHRMNR8qbAQk5AGufuMeSE5q56vCXCbEjUf0W3i5twzhsq1SFCImROQn/ZxwU5wXU/wb4jQFmqMXCI0GRgd6FTRZ6ZjVvjCY14s1INSMtgYoI6nlNq8j8L/aVTPR5AB9E8kSlQdeceQf2ktzRSjdnV5YL1B+v1iznH6ZGoM9e/fNNU8AoMR/RwCRaXb2oA00F6CuloysLDwOnGKNdUWNgWux+A1oq/tan5QAyd64sCVtQsliYUZm95wM1gH38qsJCeelI6HHGLMznuZHoPYiKd0ehb9+xPXVELCm31wY9LM8V39D/kuprKrxIyrYPE9mvIm8XQMkF8H7Od/xdDr8mmGwk39HmpWAF55kNl4TIQoFQi0e1apU9jyKvGBaYzW8n/MauS0JmJml8OZJJ1SjhG5uAY6drUUNAYDu4IbthCoEQmjWDDsTTYSDJ26bIypOpczdiAzw16OKFKX3eJz5Cd0FNFCjr+N0oeEJnfn8eYGuRy8AJi0W6JAlgjxPdqnHiIVPMrk5a/yu61cLQ0pvS50gtOmdTcwsapLuqdwaHkX3M=
