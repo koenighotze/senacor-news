@@ -7,7 +7,8 @@
     "start": "node src/app.js",
     "test": "lab -r console -o stdout -r html -o build/report/coverage.html -r lcov -o build/report/lcov.info",
     "lint": "node_modules/jshint/bin/jshint src/ test/",
-    "docker.build": "docker build -t koenighotze/senacor-news ."
+    "docker.build": "docker build -t koenighotze/senacor-news .",
+    "docker.run": "docker run --rm=true -p 8000:8000 koenighotze/senacor-news",
   },
   "author": "David Schmitz",
   "license": "MIT",

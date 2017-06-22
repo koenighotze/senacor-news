@@ -9,11 +9,62 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium deleniti e
 
 ## Try it with Docker
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas ea doloremque itaque minus temporibus nemo natus cum culpa nisi obcaecati! Commodi quia ab consequatur repellendus quas, autem cum odit vitae.
+Build the image locally:
+
+```
+npm run docker.build
+```
+
+Run the image either with
+
+```
+npm run docker.run
+```
+
+or
+
+```
+docker run --rm=true -p 8000:8000 koenighotze/senacor-news
+```
 
 ## API
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur officiis, cupiditate qui sint vitae aperiam impedit sunt, doloremque nihil quas facilis corporis deserunt molestiae nemo. Quod mollitia nemo doloribus quos!
+The application exposes the following endpoints:
+
+- `<host:port>/events/`: exposes Senacor events
+- `<host:port>/senacor/`: deprecated, same as the `event` endpoint
+- `<host:port>/health/`: used for checking the health of the application
+
+
+### Events
+
+This is an example output:
+
+```json
+[
+    {
+        "date":     "22.06.2017",
+        "location": "Berlin",
+        "summary":  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis
+                     optio adipisci, reiciendis id voluptatibus minus, earum",
+        "title":    "Senacor Summer Camp"
+    },
+    {
+        ....
+    }
+]
+```
+
+
+### Health
+
+This is an example output, if the app is healthy:
+
+```json
+{
+    "status": "ok"
+}
+```
 
 ## Deployment on Amazon Elastic Beanstalk
 
