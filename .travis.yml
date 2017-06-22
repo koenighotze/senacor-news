@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '7'
+  - "7"
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIIPHE4XCYXHR25CA
