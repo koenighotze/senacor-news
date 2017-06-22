@@ -17,6 +17,7 @@ COPY config/ config/
 COPY src/ src/
 HEALTHCHECK --interval=30s --timeout=3s CMD wget -q http://localhost:8000/health/ || exit 1
 
+# Debug port and application port
 EXPOSE 9229 8000
 ENV NODE_ENV production
 
