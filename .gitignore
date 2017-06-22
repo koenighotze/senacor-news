@@ -8,3 +8,4 @@ node_modules/
 .DS_Store
 *.zip
 npm-debug.log
+build/
