@@ -15,9 +15,9 @@ const parseSenacorAktuelles = function (body) {
             const [location, date] = $(elem.find('div.date')[0]).text().trim().split(", ")
 
             collected.push({
-                "location": location,
-                "date": date,
-                "title": title,
+                location,
+                date,
+                title,
                 "summary": cleanup($(elem.find('div.text')[0]).text().trim())
             })
         }
