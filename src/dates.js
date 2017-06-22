@@ -1,16 +1,16 @@
 const compareDates = function (first, second) {
-    const [a_day, a_month, a_year] = first.date.split(".");
-    const [b_day, b_month, b_year] = second.date.split(".");
+    const [firstDay, firstMonth, firstYear] = first.date.split(".");
+    const [secondDay, secondMonth, secondYear] = second.date.split(".");
 
-    if (b_year !== a_year) {
-        return a_year - b_year
+    if (secondYear !== firstYear) {
+        return firstYear - secondYear
     }
 
-    if (a_month !== b_month) {
-        return a_month - b_month
+    if (firstMonth !== secondMonth) {
+        return firstMonth - secondMonth
     }
 
-    return a_day - b_day
+    return firstDay - secondDay
 }
 
 
