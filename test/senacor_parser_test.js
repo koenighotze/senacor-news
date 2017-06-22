@@ -7,12 +7,12 @@ chai.should();
 chai.use(require('chai-things'))
 chai.use(require('chai-string'))
 
-const test_data = require('./test_data.js')
+const testdata = require('./test_data.js')
 const parseSenacorAktuelles = require('../src/senacor_parser').parseSenacorAktuelles
 
 lab.experiment('parseSenacorAktuelles', () => {
     lab.test('should return the list of news items', (done) => {
-        const result = parseSenacorAktuelles(test_data.homePage)
+        const result = parseSenacorAktuelles(testdata.homePage)
 
         expect(result.length).to.be.eql(4)
         result.should.all.have.property('date')
@@ -31,7 +31,7 @@ lab.experiment('parseSenacorAktuelles', () => {
     })
 
     lab.test('should remove the Weitere Infos section from all items', (done) => {
-        const result = parseSenacorAktuelles(test_data.homePage)
+        const result = parseSenacorAktuelles(testdata.homePage)
 
         result.forEach(({summary}) => {
             expect(summary).to.not.contain('Weitere Infos')
@@ -42,14 +42,14 @@ lab.experiment('parseSenacorAktuelles', () => {
     })
 
     lab.test('should sort the events by date', (done) => {
-        const result = parseSenacorAktuelles(test_data.homePage)
+        const result = parseSenacorAktuelles(testdata.homePage)
 
         for (let i = 1; i < result.length; i++) {
-            const [a_day, a_month, a_year] = result[i].date.split(".")
-            const next = new Date(a_year, a_month - 1, a_day)
+            const [aday, amonth, ayear] = result[i].date.split(".")
+            const next = new Date(ayear, amonth - 1, aday)
 
-            const [b_day, b_month, b_year] = result[i - 1].date.split(".")
-            const previous = new Date(b_year, b_month - 1, b_day)
+            const [bday, bmonth, byear] = result[i - 1].date.split(".")
+            const previous = new Date(byear, bmonth - 1, bday)
 
             expect(next.getTime()).to.be.lte(previous.getTime())
         }
