@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
-    "test": "lab -v -c",
-    "lint": "node_modules/jshint/bin/jshint src/ test/"
+    "test": "lab -r console -o stdout -r html -o build/report/coverage.html -r lcov -o build/report/lcov.info",
+    "lint": "node_modules/jshint/bin/jshint -r lcov src/ test/",
+    "docker.build": "docker build -t koenighotze/senacor-news ."
   },
   "author": "David Schmitz",
   "license": "MIT",
@@ -27,5 +28,9 @@
     "mocha": "^3.3.0",
     "request": "^2.81.0",
     "sinon": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:koenighotze/senacor-news.git"
   }
 }
