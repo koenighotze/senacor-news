@@ -10,7 +10,6 @@ const fetchCurrentEvents = function (next) {
         maxBytes: config.newsServer.maxBytes
     }, function (error, response, body) {
         if (error) {
-            console.log(error)
             next(error)
         }
         else {
