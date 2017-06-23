@@ -8,7 +8,7 @@ const compareDates = require('../src/dates').compareDates
 
 const buildEvent = function (date) {
     return {
-        date: date
+        date
     }
 }
 

@@ -16,7 +16,7 @@ module.exports = [{
             expiresIn: 60 * 60 * 24
         },
         response: {
-            schema: schema
+            schema
         }
     }
 }]

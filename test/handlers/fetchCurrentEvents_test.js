@@ -13,7 +13,7 @@ lab.experiment('fetchCurrentEvents', () => {
         const req = {
             server: {
                 methods: {
-                    fetchCurrentEvents: function (callback) {
+                    fetchCurrentEvents(callback) {
                         callback("some error")
                     }
                 }
@@ -33,7 +33,7 @@ lab.experiment('fetchCurrentEvents', () => {
         const req = {
             server: {
                 methods: {
-                    fetchCurrentEvents: function (callback) {
+                    fetchCurrentEvents(callback) {
                         callback(null, "some result")
                     }
                 }

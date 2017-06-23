@@ -5,7 +5,7 @@ const chai = require('chai')
 const expect = chai.expect
 const Wreck = require('wreck')
 const fetchCurrentEvents = require('../src/fetch').fetchCurrentEvents
-const test_data = require('./test_data.js')
+const testData = require('./test_data.js')
 
 lab.experiment('fetch', () => {
     const originalGet = Wreck.get
@@ -18,7 +18,7 @@ lab.experiment('fetch', () => {
 
     lab.test('should call next with list of events', (done) => {
         Wreck.get = function (url, options, callback) {
-            callback(null, {statusCode: 200}, test_data.homePage)
+            callback(null, {statusCode: 200}, testData.homePage)
         }
 
         const next = function (error, result) {
