@@ -14,19 +14,13 @@ resource "aws_instance" "senacor-aktuell" {
     command = "echo ${aws_instance.senacor-aktuell.public_ip} > ip_address.txt"
   }
 
-  provisioner "file" {
-    source      = "senacor-aktuelles-1.0.0.tgz"
-    destination = "senacor-aktuelles-1.0.0.tgz"
-
-    connection {
-      timeout = "5m"
-      user = "ubuntu"
-    }
+  provisioner "local-exec" {
+    command = "pushd .. && npm run package"
   }
 
   provisioner "file" {
-    source      = "senacor-aktuelles-1.0.0.tgz"
-    destination = "senacor-aktuelles-1.0.0.tgz"
+    source      = "../build/senacor-news.tgz"
+    destination = "senacor-news.tgz"
 
     connection {
       timeout = "5m"
@@ -36,15 +30,13 @@ resource "aws_instance" "senacor-aktuell" {
 
   provisioner "remote-exec" {
     inline = [
-      "curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -",
-      "sudo apt-get install -y nodejs",
-      "tar xzf senacor-aktuelles-1.0.0.tgz",
-      "cd package",
-      "npm i"
+      "curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -",
+      "sudo apt-get install nodejs",
+      "tar --warning=no-unknown-keyword -tvf senacor-news.tar"
     ]
 
     connection {
-      timeout = "5m"
+      timeout = "10m"
       user = "ubuntu"
     }
   }
@@ -52,6 +44,7 @@ resource "aws_instance" "senacor-aktuell" {
   tags {
     Name = "senacor-aktuell"
     Owner = "dschmitz"
+    Costcenter = "tecco"
   }
 }
 
@@ -81,6 +74,7 @@ resource "aws_security_group" "sec-group" {
 
   tags {
     Owner = "dschmitz"
+    Costcenter = "tecco"
   }
 }
 
