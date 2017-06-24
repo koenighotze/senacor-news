@@ -24,12 +24,32 @@ server.route(require('./routes/health'))
 
 // only start if we are not required by other scripts
 if (!module.parent) {
-    server.start((err) => {
+    server.register({
+        register: require('good'),
+        options: {
+            wreck: true,
+            reporters: {
+                console: [{
+                    module: 'good-squeeze',
+                    name: 'Squeeze',
+                    args: [{ wreck: '*', log: '*', response: '*' }]
+                }, {
+                    module: 'good-console'
+                }, 'stdout'],
+            }
+        }
+    }, (err) => {
         if (err) {
             throw err
         }
 
-        console.log('Running at: ' + server.info.uri)
+        server.start((err) => {
+            if (err) {
+                throw err
+            }
+
+            server.log('Running at: ' + server.info.uri)
+        })
     })
 }
 
