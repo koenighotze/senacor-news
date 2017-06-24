@@ -1,12 +1,14 @@
 provider "aws" {
   region = "eu-west-1"
+  profile = "tecco"
 }
 
 resource "aws_instance" "senacor-aktuell" {
   instance_type = "t2.micro"
-  ami = "ami-a8d2d7ce"
+  # ami = "ami-7d50491b"
+  ami = "ami-6d48500b"
 
-  key_name = "aws-30-days"
+  key_name = "senacor-news-key"
 
   vpc_security_group_ids = ["${aws_security_group.sec-group.id}"]
 
@@ -32,7 +34,7 @@ resource "aws_instance" "senacor-aktuell" {
     inline = [
       "curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -",
       "sudo apt-get install nodejs",
-      "tar --warning=no-unknown-keyword -tvf senacor-news.tar"
+      "tar --warning=no-unknown-keyword -xvzf senacor-news.tgz"
     ]
 
     connection {
@@ -85,5 +87,3 @@ resource "aws_eip" "ip" {
 output "ip" {
   value  = "${aws_eip.ip.public_ip}"
 }
-
-
