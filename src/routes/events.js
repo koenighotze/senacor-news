@@ -17,6 +17,7 @@ module.exports = [{
         },
         response: {
             schema
-        }
+        },
+        tags: ['api']
     }
 }]

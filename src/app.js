@@ -12,7 +12,9 @@ server.method('fetchCurrentEvents', fetchCurrentEvents, {
 
 server.connection({
     port: process.env.PORT || 8000,
-    routes: { cors: true }
+    routes: {
+        cors: true
+    }
 })
 
 // route will be removed in the future
@@ -24,21 +26,36 @@ server.route(require('./routes/health'))
 
 // only start if we are not required by other scripts
 if (!module.parent) {
-    server.register({
-        register: require('good'),
-        options: {
-            wreck: true,
-            reporters: {
-                console: [{
-                    module: 'good-squeeze',
-                    name: 'Squeeze',
-                    args: [{ wreck: '*', log: '*', response: '*' }]
-                }, {
-                    module: 'good-console'
-                }, 'stdout'],
+    server.register([
+        require('inert'),
+        require('vision'), {
+            register: require('hapi-swagger'),
+            options: {
+                info: {
+                    title: 'Senacor-News API Documentation',
+                    version: '1.0',
+                }
+            }
+        }, {
+            register: require('good'),
+            options: {
+                wreck: true,
+                reporters: {
+                    console: [{
+                        module: 'good-squeeze',
+                        name: 'Squeeze',
+                        args: [{
+                            wreck: '*',
+                            log: '*',
+                            response: '*'
+                        }]
+                    }, {
+                        module: 'good-console'
+                    }, 'stdout'],
+                }
             }
         }
-    }, (err) => {
+    ], (err) => {
         if (err) {
             throw err
         }
