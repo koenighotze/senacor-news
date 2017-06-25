@@ -28,15 +28,8 @@ server.route(require('./routes/health'))
 if (!module.parent) {
     server.register([
         require('inert'),
-        require('vision'), {
-            register: require('hapi-swagger'),
-            options: {
-                info: {
-                    title: 'Senacor-News API Documentation',
-                    version: '1.0',
-                }
-            }
-        }, {
+        require('vision'),
+        require('lout'), {
             register: require('good'),
             options: {
                 wreck: true,

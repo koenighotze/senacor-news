@@ -18,6 +18,7 @@ module.exports = [{
         response: {
             schema
         },
-        tags: ['api']
+        tags: ['api'],
+        description: 'Exposes events that happen @ senacor'
     }
 }]
