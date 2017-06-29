@@ -24,6 +24,8 @@ server.route(require('./routes/events'))
 
 server.route(require('./routes/health'))
 
+server.route(require('./routes/pages'))
+
 // only start if we are not required by other scripts
 if (!module.parent) {
     server.register([
@@ -52,6 +54,18 @@ if (!module.parent) {
         if (err) {
             throw err
         }
+
+        server.views({
+            engines: {
+                hbs: require('handlebars')
+            },
+            relativeTo: __dirname,
+            path: 'views',
+            isCached: false,
+            layout: true,
+            layoutPath: './views/layout',
+            partialsPath: './views/partials'
+        })
 
         server.start((err) => {
             if (err) {

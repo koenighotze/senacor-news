@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Senacor news</h1>
+    <p>This is just for viewing the extracted news.</p>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    {{#each news}}
+      {{> news_item}}
+    {{/each}}
+  </div>
+</div>

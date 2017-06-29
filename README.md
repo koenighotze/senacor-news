@@ -50,7 +50,7 @@ This is an example output:
         "title":    "Senacor Summer Camp"
     },
     {
-        ....
+        ...
     }
 ]
 ```
