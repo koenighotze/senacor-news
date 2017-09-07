@@ -45,9 +45,11 @@ lab.experiment('parseSenacorAktuelles', () => {
         const result = parseSenacorAktuelles(Testdata.homePage);
 
         for (let i = 1; i < result.length; ++i) {
+            // eslint-disable-line
             const [aday, amonth, ayear] = result[i].date.split('.');
             const next = new Date(ayear, amonth - 1, aday);
 
+            // eslint-disable-line
             const [bday, bmonth, byear] = result[i - 1].date.split('.');
             const previous = new Date(byear, bmonth - 1, bday);
 
