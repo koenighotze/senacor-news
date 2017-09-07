@@ -1,7 +1,14 @@
-const fetchCurrentEvents = function (req, reply) {
-    req.server.methods.fetchCurrentEvents(function (error, result) {
-        reply(result || [])
-    })
-}
+'use strict';
 
-module.exports = {fetchCurrentEvents}
+const fetchCurrentEvents = function (req, reply) {
+
+    req.server.methods.fetchCurrentEvents((error, result) => {
+        if (error) {
+            console.log(error);
+        }
+
+        reply(result || []);
+    });
+};
+
+module.exports = { fetchCurrentEvents };

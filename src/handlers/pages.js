@@ -1,9 +1,14 @@
+'use strict';
+
 module.exports = {
     home(request, reply) {
-      request.server.methods.fetchCurrentEvents(function (error, result) {
-        reply.view('index', {
-          news: result || []
+        request.server.methods.fetchCurrentEvents((error, result) => {
+            if (error) {
+                console.log(error);
+            }
+            reply.view('index', {
+                news: result || []
+            });
         });
-      })
     }
-}
+};

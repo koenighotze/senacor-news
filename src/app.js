@@ -1,6 +1,7 @@
-const Hapi = require('hapi')
-const fetchCurrentEvents = require('./fetch').fetchCurrentEvents
+'use strict';
 
+const Hapi = require('hapi');
+const fetchCurrentEvents = require('./fetch').fetchCurrentEvents;
 const server = new Hapi.Server();
 
 server.method('fetchCurrentEvents', fetchCurrentEvents, {
@@ -8,23 +9,23 @@ server.method('fetchCurrentEvents', fetchCurrentEvents, {
         expiresIn: 60000,
         generateTimeout: 5000
     }
-})
+});
 
 server.connection({
     port: process.env.PORT || 8000,
     routes: {
         cors: true
     }
-})
+});
 
 // route will be removed in the future
-server.route(require('./routes/senacor'))
+server.route(require('./routes/senacor'));
 
-server.route(require('./routes/events'))
+server.route(require('./routes/events'));
 
-server.route(require('./routes/health'))
+server.route(require('./routes/health'));
 
-server.route(require('./routes/pages'))
+server.route(require('./routes/pages'));
 
 // only start if we are not required by other scripts
 if (!module.parent) {
@@ -46,13 +47,14 @@ if (!module.parent) {
                         }]
                     }, {
                         module: 'good-console'
-                    }, 'stdout'],
+                    }, 'stdout']
                 }
             }
         }
     ], (err) => {
+
         if (err) {
-            throw err
+            throw err;
         }
 
         server.views({
@@ -65,16 +67,17 @@ if (!module.parent) {
             layout: true,
             layoutPath: './views/layout',
             partialsPath: './views/partials'
-        })
+        });
 
         server.start((err) => {
+
             if (err) {
-                throw err
+                throw err;
             }
 
-            server.log('Running at: ' + server.info.uri)
-        })
-    })
+            server.log('Running at: ' + server.info.uri);
+        });
+    });
 }
 
 module.exports = server;

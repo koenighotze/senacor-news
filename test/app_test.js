@@ -1,84 +1,83 @@
-const Lab = require('lab')
-const lab = exports.lab = Lab.script()
-const chai = require('chai')
-chai.should();
-chai.use(require('chai-things'))
-chai.use(require('chai-string'))
-const expect = chai.expect
-const sinon = require('sinon')
+'use strict';
 
-const fetch = require('../src/fetch')
+const Lab = require('lab');
+const lab = exports.lab = Lab.script();
+const Code = require('Code');
+const expect = Code.expect;
+const Sinon = require('sinon');
+
+const Fetch = require('../src/fetch');
 
 lab.experiment('server', () => {
-    let app,
-        sandbox,
-        fetchCurrentEventsStub;
+    let app;
+    let sandbox;
+    let fetchCurrentEventsStub;
 
     lab.beforeEach((done) => {
-        sandbox = sinon.sandbox.create()
-        fetchCurrentEventsStub = sandbox.stub(fetch, 'fetchCurrentEvents')
+        sandbox = Sinon.sandbox.create();
+        fetchCurrentEventsStub = sandbox.stub(Fetch, 'fetchCurrentEvents');
 
         fetchCurrentEventsStub.callsFake((next) => {
-            next(null, require('./test_events').events)
-        })
+            next(null, require('./test_events').events);
+        });
 
-        app = require('../src/app')
+        app = require('../src/app');
 
-        done()
-    })
+        done();
+    });
 
     lab.afterEach((done) => {
-        sandbox.restore()
+        sandbox.restore();
 
-        done()
-    })
+        done();
+    });
 
     lab.test('should expose /events/', (done) => {
         const options = {
-            method: "GET",
-            url: "/events/"
-        }
+            method: 'GET',
+            url: '/events/'
+        };
 
-        app.inject(options, function (response) {
-            const result = response.result
+        app.inject(options, (response) => {
+            const result = response.result;
 
-            expect(response.statusCode).to.be.eql(200)
-            expect(result).to.be.instanceof(Array)
-            expect(result).to.have.length(3)
+            expect(response.statusCode).to.be.equal(200);
+            expect(result).to.be.instanceof(Array);
+            expect(result).to.have.length(3);
 
-            done()
-        })
-    })
+            done();
+        });
+    });
 
     lab.test('should expose /senacor/', (done) => {
         const options = {
-            method: "GET",
-            url: "/senacor/"
-        }
+            method: 'GET',
+            url: '/senacor/'
+        };
 
-        app.inject(options, function (response) {
-            const result = response.result
+        app.inject(options, (response) => {
+            const result = response.result;
 
-            expect(response.statusCode).to.be.eql(200)
-            expect(result).to.be.instanceof(Array)
-            expect(result).to.have.length(3)
+            expect(response.statusCode).to.be.equal(200);
+            expect(result).to.be.instanceof(Array);
+            expect(result).to.have.length(3);
 
-            done()
-        })
-    })
+            done();
+        });
+    });
 
     lab.test('should expose /health/', (done) => {
         const options = {
-            method: "GET",
-            url: "/health/"
-        }
+            method: 'GET',
+            url: '/health/'
+        };
 
         app.inject(options, (response) => {
-            expect(response.statusCode).to.be.eql(200)
-            expect(JSON.parse(response.payload).status).to.be.eql("ok")
+            expect(response.statusCode).to.be.equal(200);
+            expect(JSON.parse(response.payload).status).to.be.equal('ok');
 
-            done()
-        })
-    })
+            done();
+        });
+    });
 
-})
+});

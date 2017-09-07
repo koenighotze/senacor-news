@@ -1,4 +1,6 @@
-const fs = require('fs')
+'use strict';
+
+const Fs = require('fs');
 module.exports = {
-    homePage: fs.readFileSync(__dirname + '/home_page.html', 'utf8')
-}
+    homePage: Fs.readFileSync(__dirname + '/home_page.html', 'utf8')
+};

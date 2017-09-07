@@ -1,11 +1,13 @@
-const Joi = require('joi')
+'use strict';
+
+const Joi = require('joi');
 
 const schema = Joi.array().items({
     date: Joi.string().required(),
     location: Joi.string().required(),
     title: Joi.string().required(),
     summary: Joi.string().required()
-})
+});
 
 module.exports = [{
     method: 'GET',
@@ -21,4 +23,4 @@ module.exports = [{
         tags: ['api'],
         description: 'Exposes events that happen @ senacor'
     }
-}]
+}];

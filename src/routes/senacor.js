@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = [
     {
         method: 'GET',
@@ -11,4 +13,4 @@ module.exports = [
             description: 'Deprecated endpoint. See /events/ for the actual route'
         }
     }
-]
+];
