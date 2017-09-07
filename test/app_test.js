@@ -2,7 +2,7 @@
 
 const Lab = require('lab');
 const lab = exports.lab = Lab.script();
-const Code = require('Code');
+const Code = require('code');
 const expect = Code.expect;
 const Sinon = require('sinon');
 
