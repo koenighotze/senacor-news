@@ -2,7 +2,7 @@
 
 const Cheerio = require('cheerio');
 const compareDates = require('./dates').compareDates;
-const Cleanup = require('./cleanup');
+const cleanup = require('./cleanup').cleanup;
 
 const parseSenacorAktuelles = function (body) {
 
@@ -21,7 +21,7 @@ const parseSenacorAktuelles = function (body) {
                 location,
                 date,
                 title,
-                'summary': Cleanup($(elem.find('div.text')[0]).text().trim())
+                'summary': cleanup($(elem.find('div.text')[0]).text().trim())
             });
         }
 
