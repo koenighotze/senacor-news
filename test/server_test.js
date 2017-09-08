@@ -5,6 +5,7 @@ const lab = exports.lab = Lab.script();
 const Code = require('code');
 const expect = Code.expect;
 const Sinon = require('sinon');
+const Proxyquire = require('proxyquire');
 
 const Fetch = require('../src/fetch');
 
@@ -21,9 +22,10 @@ lab.experiment('server', () => {
             next(null, require('./test_events').events);
         });
 
-        app = require('../src/app');
-
-        done();
+        require('../src/server').init( (err, server) => {
+            app = server;
+            done();
+        });
     });
 
     lab.afterEach((done) => {
@@ -80,4 +82,47 @@ lab.experiment('server', () => {
         });
     });
 
+});
+
+lab.experiment('server', () => {
+    let originalPort;
+
+    lab.beforeEach((done) => {
+        originalPort = process.env.PORT;
+        done();
+    })
+
+    lab.afterEach((done) => {
+        if (originalPort) {
+            process.env.PORT = originalPort;
+        }
+        else {
+            delete process.env.PORT;
+        }
+
+
+        done();
+    })
+
+    lab.test('should set the port from env', (done) => {
+        process.env.PORT = 1234;
+
+        require('../src/server').init( (err, server) => {
+            expect(server.info.port).to.be.equal(1234);
+            done();
+        });
+    });
+});
+
+lab.experiment('a failing server', () => {
+    lab.test('should call the callback with the error', (done) => {
+        const Server = Proxyquire('../src/server', {
+            lout: require('./mocks/failingLout')
+        });
+
+        Server.init( (err) => {
+            expect(err).to.not.be.null();
+            done()
+        })
+    });
 });
