@@ -5,7 +5,7 @@ const lab = exports.lab = Lab.script();
 const Code = require('code');
 const expect = Code.expect;
 const Sinon = require('sinon');
-const Proxyquire = require('proxyquire');
+const proxyquire = require('proxyquire');
 
 const Fetch = require('../src/fetch');
 
@@ -116,7 +116,7 @@ lab.experiment('server', () => {
 
 lab.experiment('a failing server', () => {
     lab.test('should call the callback with the error', (done) => {
-        const Server = Proxyquire('../src/server', {
+        const Server = proxyquire('../src/server', {
             lout: require('./mocks/failingLout')
         });
 
