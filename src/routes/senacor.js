@@ -6,6 +6,7 @@ module.exports = [
         path: '/senacor/',
         handler: require('../handlers/fetchCurrentEvents').fetchCurrentEvents,
         config: {
+            security: true,
             tags: ['api'],
             cache: {
                 expiresIn: 60 * 60 * 24

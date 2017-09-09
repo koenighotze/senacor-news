@@ -4,6 +4,9 @@ module.exports = [
     {
         method: 'GET',
         path: '/view/',
-        handler: require('../handlers/pages').home
+        handler: require('../handlers/pages').home,
+        config: {
+            security: true
+        }
     }
 ];

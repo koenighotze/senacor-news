@@ -14,6 +14,7 @@ module.exports = [{
     path: '/events/',
     handler: require('../handlers/fetchCurrentEvents').fetchCurrentEvents,
     config: {
+        security: true,
         cache: {
             expiresIn: 60 * 60 * 24
         },

@@ -12,6 +12,7 @@ module.exports = [
         path: '/health/',
         handler: require('../handlers/health').healthCheck,
         config: {
+            security: true,
             tags: ['api'],
             description: 'Health check endpoint',
             response: {
