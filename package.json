@@ -34,14 +34,14 @@
     "code": "^4.1.0",
     "eslint-config-hapi": "^10.1.0",
     "eslint-plugin-hapi": "^4.0.0",
-    "jshint": "^2.9.4",
+    "jshint": "^2.9.6",
     "jsonfile": "^3.0.0",
     "lab": "^13.0.2",
     "mocha": "^3.3.0",
     "proxyquire": "^1.8.0",
-    "request": "^2.81.0",
+    "request": "^2.88.0",
     "sinon": "^2.1.0",
-    "snyk": "^1.49.4"
+    "snyk": "^1.110.2"
   },
   "repository": {
     "type": "git",
