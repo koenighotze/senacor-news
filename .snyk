@@ -19,4 +19,12 @@ ignore:
     - hapi > statehood > iron > cryptiles:
         reason: None given
         expires: '2018-12-28T14:06:37.376Z'
+  SNYK-JS-LODASHMERGE-173732:
+    - cheerio > lodash.merge:
+        reason: None given
+        expires: '2019-07-04T10:34:57.422Z'
+  SNYK-JS-LODASHMERGE-173733:
+    - cheerio > lodash.merge:
+        reason: None given
+        expires: '2019-07-04T10:34:57.422Z'
 patch: {}
