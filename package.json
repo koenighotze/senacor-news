@@ -21,7 +21,7 @@
     "good": "^7.3.0",
     "good-console": "^6.4.1",
     "good-squeeze": "^5.1.0",
-    "handlebars": "^4.7.2",
+    "handlebars": "^4.7.7",
     "hapi": "^16.7.0",
     "inert": "^4.2.1",
     "joi": "^10.6.0",
