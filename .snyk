@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.5
+version: v1.22.0
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:moment:20170905':
@@ -27,4 +27,35 @@ ignore:
     - cheerio > lodash.merge:
         reason: None given
         expires: '2019-07-04T10:34:57.422Z'
+  SNYK-JS-AMMO-548920:
+    - hapi > ammo:
+        reason: None given
+        expires: '2022-08-11T06:35:01.963Z'
+    - inert > ammo:
+        reason: None given
+        expires: '2022-08-11T06:35:01.963Z'
+  SNYK-JS-CSSWHAT-1298035:
+    - cheerio > css-select > css-what:
+        reason: None given
+        expires: '2022-08-11T06:35:01.963Z'
+  SNYK-JS-HAPI-548911:
+    - hapi:
+        reason: None given
+        expires: '2022-08-11T06:35:01.963Z'
+  SNYK-JS-NTHCHECK-1586032:
+    - cheerio > css-select > nth-check:
+        reason: None given
+        expires: '2022-08-11T06:35:01.963Z'
+  SNYK-JS-SUBTEXT-467257:
+    - hapi > subtext:
+        reason: None given
+        expires: '2022-08-11T06:35:01.963Z'
+  SNYK-JS-SUBTEXT-548913:
+    - hapi > subtext:
+        reason: None given
+        expires: '2022-08-11T06:35:01.963Z'
+  SNYK-JS-SUBTEXT-548915:
+    - hapi > subtext:
+        reason: None given
+        expires: '2022-08-11T06:35:01.963Z'
 patch: {}
